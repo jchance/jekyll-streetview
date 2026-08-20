@@ -49,7 +49,7 @@ module Jekyll
 
       url = build_url(lat, lng, width, height, fov, pitch, radius, heading, source, key)
 
-      %(<img src="#{url}" alt="#{CGI.escapeHTML(alt)}" width="#{width}" height="#{height}" class="jekyll-streetview" loading="lazy">)
+      %(<img src="#{url}" alt="#{CGI.escapeHTML(alt)}" width="#{width}" height="#{height}" class="jekyll-streetview no-lightense" loading="lazy">)
     end
 
     private
