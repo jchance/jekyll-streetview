@@ -9,11 +9,12 @@ module Jekyll
     STREETVIEW_BASE = "https://maps.googleapis.com/maps/api/streetview"
     GEOCODE_BASE    = "https://maps.googleapis.com/maps/api/geocode/json"
 
-    DEFAULT_WIDTH  = 800
+    DEFAULT_WIDTH  = 640
     DEFAULT_HEIGHT = 400
     DEFAULT_FOV    = 90
     DEFAULT_PITCH  = 0
     DEFAULT_RADIUS = 50
+    MAX_FREE_DIMENSION = 640
 
     def initialize(tag_name, markup, tokens)
       super
@@ -34,6 +35,11 @@ module Jekyll
 
       width   = (params["width"]   || config["width"]   || DEFAULT_WIDTH).to_i
       height  = (params["height"]  || config["height"]  || DEFAULT_HEIGHT).to_i
+
+      # Google Street View Static API caps dimensions at 640 on the free tier.
+      # Clamp silently so HTML attributes match what Google actually returns.
+      width  = [width,  MAX_FREE_DIMENSION].min
+      height = [height, MAX_FREE_DIMENSION].min
       fov     = (params["fov"]     || config["fov"]     || DEFAULT_FOV).to_i
       pitch   = (params["pitch"]   || config["pitch"]   || DEFAULT_PITCH).to_i
       radius  = (params["radius"]  || config["radius"]  || DEFAULT_RADIUS).to_i

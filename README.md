@@ -62,8 +62,8 @@ All parameters are optional and override values in `_config.yml`.
 | --- | --- | --- |
 | `lat` | — | Latitude (required if no address string) |
 | `lng` | — | Longitude (required if no address string) |
-| `width` | `800` | Image width in pixels |
-| `height` | `400` | Image height in pixels |
+| `width` | `640` | Image width in pixels (max 640 on free tier; up to 1280 with billing enabled) |
+| `height` | `400` | Image height in pixels (max 640 on free tier; up to 1280 with billing enabled) |
 | `heading` | auto | Camera compass heading (0-360). If omitted, Google points toward the location. |
 | `fov` | `90` | Horizontal field of view in degrees (10-120). Lower = more zoom. |
 | `pitch` | `0` | Camera up/down angle (-90 to 90). Positive = up, negative = down. |
